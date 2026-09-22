@@ -1,0 +1,488 @@
+/* =========================================================
+   kinalbohdan.dev — стиль «бібліотечна картка»
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --paper:      #ECE6D8;   /* крафтовий фон сторінки */
+  --card:       #FBF7ED;   /* поверхня картки */
+  --card-edge:  #DCD2B8;   /* тінь-обріз картки */
+  --ink:        #2B2620;   /* типографська фарба */
+  --muted:      #6E6656;   /* приглушений текст */
+  --line:       #D3C7A8;   /* лінії розлініювання */
+  --stamp:      #2E6B52;   /* фарба штампу — глибокий зелений */
+  --stamp-soft: #DEEAE1;
+  --tape:       #C99A63;   /* колір "скотчу" на фото */
+
+  --font-serif: 'Source Serif 4', Georgia, serif;
+  --font-mono:  'IBM Plex Mono', 'Courier New', monospace;
+
+  --content-w: 700px;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(43,38,32,0.05) 1px, transparent 0) 0 0/14px 14px,
+    var(--paper);
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: inherit; }
+a:focus-visible, button:focus-visible{
+  outline: 2px solid var(--stamp);
+  outline-offset: 3px;
+}
+
+img{ max-width: 100%; display: block; }
+
+.wrap{
+  max-width: var(--content-w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- верхня панель ---------- */
+
+.catalog-bar{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--ink);
+  color: #EFE9DA;
+  border-bottom: 3px solid var(--stamp);
+}
+.catalog-bar .wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  flex-wrap: wrap;
+}
+.drawer-label{
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: #EFE9DA;
+}
+.drawer-label b{ color: #9FCBB4; font-weight: 600; }
+
+.catalog-nav{
+  list-style: none;
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+.catalog-nav a{
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-decoration: none;
+  color: #C9C2AF;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.catalog-nav a:hover{
+  color: #fff;
+  border-color: #4A4030;
+}
+
+/* ---------- секції як картки з "вушком" ---------- */
+
+section{
+  padding: 56px 0;
+}
+
+.card{
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--card-edge);
+  box-shadow: 6px 6px 0 var(--card-edge);
+  padding: 40px 40px 40px 76px;
+}
+
+.card-tab{
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 56px;
+  border-right: 1px dashed var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 34px;
+  gap: 14px;
+}
+.card-tab .hole{
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  background: var(--paper);
+}
+.card-tab .code{
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--stamp);
+  font-weight: 500;
+}
+
+h1, h2, h3{
+  font-family: var(--font-serif);
+  font-weight: 600;
+  margin: 0;
+  color: var(--ink);
+}
+
+.section-title{
+  font-size: 1.55rem;
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+p{
+  margin: 0 0 16px;
+  max-width: 58ch;
+  color: var(--muted);
+}
+p:last-child{ margin-bottom: 0; }
+
+/* ---------- герой: сама бібліотечна картка ---------- */
+
+.hero-section{ padding-top: 64px; }
+
+.library-card{
+  background: var(--card);
+  border: 1px solid var(--card-edge);
+  box-shadow: 10px 10px 0 var(--card-edge);
+  padding: 0;
+  overflow: hidden;
+}
+
+.lc-strip{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--stamp-soft);
+  border-bottom: 1px dashed var(--stamp);
+  padding: 10px 28px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--stamp);
+  letter-spacing: 0.04em;
+}
+
+.lc-body{
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 32px;
+  padding: 32px 28px 8px;
+}
+
+.lc-photo-wrap{
+  position: relative;
+  width: 150px;
+}
+.lc-photo{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 1px solid var(--card-edge);
+  background: #DCD2B8;
+  filter: grayscale(0.25) contrast(1.02);
+}
+.lc-tape{
+  position: absolute;
+  width: 46px;
+  height: 20px;
+  background: var(--tape);
+  opacity: 0.55;
+  top: -8px;
+  left: -10px;
+  transform: rotate(-38deg);
+}
+.lc-tape.br{
+  top: auto;
+  left: auto;
+  bottom: 2px;
+  right: -10px;
+  transform: rotate(-38deg);
+}
+
+.lc-name{
+  font-size: clamp(1.9rem, 5vw, 2.5rem);
+  line-height: 1.15;
+}
+.lc-role{
+  margin-top: 10px;
+  color: var(--muted);
+  max-width: 44ch;
+}
+
+.lc-fields{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 24px;
+  border-top: 1px solid var(--line);
+  margin: 24px 28px 0;
+}
+.lc-field{
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.lc-field dt{
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+.lc-field dd{
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.lc-barcode{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 28px 26px;
+}
+.lc-bars{
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 30px;
+}
+.lc-bars span{
+  display: inline-block;
+  width: 2px;
+  background: var(--ink);
+}
+.lc-handle{
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
+.cta-row{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 0 28px 28px;
+}
+.btn{
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-decoration: none;
+  padding: 10px 16px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.btn.primary{
+  background: var(--stamp);
+  color: #fff;
+  border-color: var(--stamp);
+}
+.btn.primary:hover{ background: #235741; }
+.btn.ghost:hover{ background: var(--ink); color: #fff; }
+
+/* ---------- fact list у "Про мене" ---------- */
+
+.about-grid{
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 36px;
+}
+.fact-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.94rem;
+  align-self: start;
+  border-top: 1px solid var(--line);
+}
+.fact-list li{
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+}
+.fact-list span.k{
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink);
+}
+
+/* ---------- напрямки ---------- */
+
+.focus-list{
+  display: flex;
+  flex-direction: column;
+}
+.focus-row{
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 20px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+.focus-row:first-child{ border-top: none; }
+.focus-stamp{
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px dashed var(--stamp);
+  color: var(--stamp);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  transform: rotate(-8deg);
+  text-align: center;
+  line-height: 1.1;
+}
+.focus-row h3{ font-size: 1.1rem; margin-bottom: 6px; }
+.focus-row p{ margin: 0; font-size: 0.98rem; }
+
+/* ---------- освіта: таблиця позначок ---------- */
+
+.due-table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.96rem;
+}
+.due-table thead th{
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--muted);
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--ink);
+}
+.due-table td{
+  padding: 16px 12px 16px 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  color: var(--muted);
+}
+.due-table td:first-child{
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--stamp);
+  white-space: nowrap;
+  padding-right: 20px;
+  width: 100px;
+}
+.due-table td h3{
+  font-size: 1.02rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.due-table tr:last-child td{ border-bottom: none; }
+
+/* ---------- зараз створюю ---------- */
+
+.hold-slip{
+  border: 1px dashed var(--stamp);
+  background: var(--stamp-soft);
+  padding: 24px 26px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.hold-mark{
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--stamp);
+  border: 1px solid var(--stamp);
+  padding: 4px 8px;
+  transform: rotate(-4deg);
+  white-space: nowrap;
+}
+.hold-slip h3{ font-size: 1.05rem; margin-bottom: 6px; }
+.hold-slip p{ margin: 0; font-size: 0.98rem; }
+.hold-slip a{
+  color: var(--stamp);
+  text-decoration: none;
+  border-bottom: 1px solid var(--stamp);
+}
+
+/* ---------- контакти ---------- */
+
+.contact-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+.contact-chip{
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 10px 16px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.contact-chip:hover{
+  background: var(--ink);
+  color: var(--paper);
+}
+
+footer{
+  padding: 30px 0 56px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+footer b{ color: var(--stamp); }
+
+/* ---------- адаптивність ---------- */
+
+@media (max-width: 720px){
+  body{ font-size: 16.5px; }
+  .card{ padding: 32px 24px 32px 56px; }
+  .card-tab{ width: 40px; padding-top: 24px; }
+  .lc-body{ grid-template-columns: 1fr; }
+  .lc-photo-wrap{ width: 120px; }
+  .lc-photo{ width: 120px; height: 120px; }
+  .lc-fields{ grid-template-columns: 1fr; margin-left: 0; margin-right: 0; }
+  .lc-fields dd:nth-child(2), .lc-fields dd:nth-child(4){ padding-left: 0; }
+  .about-grid{ grid-template-columns: 1fr; }
+  .due-table{ font-size: 0.9rem; }
+  .due-table td:first-child{ width: 74px; }
+  .catalog-bar .wrap{ flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *{ transition: none !important; }
+}
