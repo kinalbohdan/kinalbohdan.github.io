@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bohdan Kinal — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --paper:      #FFFFFF;
+    --ink:        #0A0A0A;
+    --surface:    #F4F4F5;
+    --line:       #E4E4E7;
+    --text:       #0A0A0A;
+    --text-muted: #5A5A60;
+    --accent:     #DC2626;
+    --accent-dark:#991B1B;
+    --accent-dim: #FEE2E2;
+    --accent-soft:#FEF2F2;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body:    'Inter', sans-serif;
+    --font-mono:    'JetBrains Mono', monospace;
+
+    --sidebar-w: 260px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  img{ max-width: 100%; display: block; }
+
+  .layout{
+    display: grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    min-height: 100vh;
+  }
+
+  .site-nav{
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    background: var(--ink);
+    color: #fff;
+    padding: 44px 28px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    border-right: 6px solid var(--accent);
+  }
+
+  .nav-mark{
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+  .nav-mark span{ color: var(--accent); }
+
+  .nav-links{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .nav-links li{ position: relative; }
+
+  .nav-links a{
+    display: block;
+    text-decoration: none;
+    color: #A1A1AA;
+    padding: 2px 12px 2px 0;
+    position: relative;
+    transition: color 0.15s ease, padding-left 0.15s ease;
+  }
+
+  .nav-num{
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 3px;
+    transition: color 0.15s ease;
+  }
+
+  .nav-label{
+    display: block;
+    font-size: 1.08rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .nav-links a::before{
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 4px;
+    bottom: 4px;
+    width: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 0.18s ease;
+  }
+
+  .nav-links a:hover{
+    color: #fff;
+    padding-left: 6px;
+  }
+  .nav-links a:hover::before{ transform: scaleY(1); }
+  .nav-links a:hover .nav-num{ color: #FCA5A5; }
+
+  .nav-foot{
+    margin-top: auto;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: #52525B;
+    letter-spacing: 0.04em;
+  }
+
+  .main-col{ min-width: 0; }
+
+  .wrap{
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 44px;
+  }
+
+  section{
+    padding: 96px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  section:last-of-type{ border-bottom: none; }
+
+  h1, h2, h3{
+    font-family: var(--font-display);
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .eyebrow-line{
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin: 0 0 16px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .eyebrow-line::before{
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    background: var(--accent);
+    vertical-align: middle;
+    margin-right: 12px;
+    transform: translateY(-2px);
+  }
+
+  .section-title{
+    font-size: 1.9rem;
+    margin-bottom: 44px;
+    position: relative;
+    padding-bottom: 18px;
+    line-height: 1.2;
+  }
+  .section-title::after{
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 64px;
+    height: 3px;
+    background: var(--accent);
+  }
+
+  p{
+    margin: 0 0 18px;
+    max-width: 62ch;
+    color: var(--text-muted);
+    font-size: 1.02rem;
+  }
+  p:last-child{ margin-bottom: 0; }
+
+  .hero{
+    padding-top: 104px;
+    padding-bottom: 104px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 56px;
+    align-items: center;
+    background: linear-gradient(180deg, var(--accent-soft) 0%, var(--paper) 100%);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-photo{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 0 8px var(--paper), 0 0 0 9px var(--line);
+  }
+  .hero h1{
+    font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+    line-height: 1.1;
+  }
+  .hero h1 em{
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero .role{
+    font-family: var(--font-body);
+    color: var(--text-muted);
+    font-size: 1.12rem;
+    margin-top: 14px;
+    max-width: 46ch;
+  }
+  .hero .handle{
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--accent);
+    margin-top: 20px;
+  }
+  .cta-row{
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    transition: all 0.15s ease;
+  }
+  .btn.primary{
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .btn.primary:hover{ background: var(--accent-dark); border-color: var(--accent-dark); }
+  .btn.ghost{ color: var(--ink); }
+  .btn.ghost:hover{ border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+  .about-grid{
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
+  }
+  .fact-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
+  }
+  .fact-list li{
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--text-muted);
+  }
+  .fact-list li:last-child{ border-bottom: none; }
+  .fact-list span.k{ color: var(--ink); font-weight: 500; }
+
+  .focus-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .focus-card{
+    background: var(--paper);
+    padding: 32px 26px;
+    transition: background 0.15s ease;
+    position: relative;
+  }
+  .focus-card::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 3px;
+    background: var(--accent);
+    transition: width 0.25s ease;
+  }
+  .focus-card:hover{ background: var(--accent-soft); }
+  .focus-card:hover::before{ width: 100%; }
+  .focus-card h3{
+    font-size: 1.08rem;
+    margin-bottom: 10px;
+  }
+  .focus-card h3::before{
+    content: "— ";
+    color: var(--accent);
+  }
+  .focus-card p{ font-size: 0.98rem; margin: 0; }
+
+  .timeline{ display: flex; flex-direction: column; gap: 0; }
+  .tl-item{
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 28px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+  }
+  .tl-item:first-child{ border-top: 2px solid var(--accent); }
+  .tl-when{
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    color: var(--accent);
+    padding-top: 4px;
+    font-weight: 500;
+  }
+  .tl-body h3{ font-size: 1.15rem; margin-bottom: 8px; }
+  .tl-body p{ margin: 0; font-size: 1rem; }
+
+  .now-card{
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-dim);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 32px 30px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .now-dot{
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 9px;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 5px var(--accent-dim);
+  }
+  .now-card h3{ font-size: 1.12rem; margin-bottom: 8px; }
+  .now-card p{ margin: 0; font-size: 1rem; color: var(--text-muted); }
+  .now-card a{ color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-dim); }
+  .now-card a:hover{ border-color: var(--accent); }
+
+  .contact-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 10px;
+  }
+  .contact-chip{
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
+    text-decoration: none;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 12px 18px;
+    transition: all 0.15s ease;
+  }
+  .contact-chip:hover{
+    border-color: var(--accent);
+    color: #fff;
+    background: var(--accent);
+  }
+
+  footer{
+    padding: 36px 0 64px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  footer span{ color: var(--accent); }
+
+  @media (max-width: 900px){
+    .layout{ grid-template-columns: 1fr; }
+
+    .site-nav{
+      position: sticky;
+      top: 0;
+      height: auto;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+      padding: 14px 20px;
+      border-right: none;
+      border-bottom: 6px solid var(--accent);
+      overflow-x: auto;
+    }
+    .nav-links{
+      flex-direction: row;
+      gap: 22px;
+      align-items: center;
+    }
+    .nav-links li{ flex-shrink: 0; }
+    .nav-links a{ padding: 2px 0; }
+    .nav-num{ margin-bottom: 1px; font-size: 0.7rem; }
+    .nav-label{ font-size: 0.95rem; white-space: nowrap; }
+    .nav-links a::before{ display: none; }
+    .nav-links a:hover{ padding-left: 0; }
+    .nav-foot{ display: none; }
+
+    .wrap{ padding: 0 24px; }
+    section{ padding: 64px 0; }
+    .hero{ grid-template-columns: 1fr; padding-top: 56px; padding-bottom: 56px; }
+    .hero-photo{ width: 116px; height: 116px; }
+    .about-grid{ grid-template-columns: 1fr; }
+    .focus-grid{ grid-template-columns: 1fr; }
+    .tl-item{ grid-template-columns: 1fr; gap: 6px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+
+  <header class="site-nav">
+    <span class="nav-mark">kinalbohdan<span>.</span>dev</span>
+
+    <ul class="nav-links">
+      <li>
+        <a href="#about">
+          <span class="nav-num">01</span>
+          <span class="nav-label">About</span>
+        </a>
+      </li>
+      <li>
+        <a href="#focus">
+          <span class="nav-num">02</span>
+          <span class="nav-label">Focus</span>
+        </a>
+      </li>
+      <li>
+        <a href="#education">
+          <span class="nav-num">03</span>
+          <span class="nav-label">Education</span>
+        </a>
+      </li>
+      <li>
+        <a href="#building">
+          <span class="nav-num">04</span>
+          <span class="nav-label">Building</span>
+        </a>
+      </li>
+      <li>
+        <a href="#contact">
+          <span class="nav-num">05</span>
+          <span class="nav-label">Contact</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="nav-foot">© 2026 · Dnipro</div>
+  </header>
+
+  <div class="main-col">
+
+    <main>
+
+      <section class="hero wrap" id="top">
+        <div>
+          <p class="eyebrow-line">Résumé</p>
+          <h1><em>Bohdan Kinal</em></h1>
+          <p class="role">4th-year Computer Science student, learning to build software and figuring out where in the stack I want to live.</p>
+          <p class="handle">github.com/kinalbohdan</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#contact">Get in touch</a>
+            <a class="btn ghost" href="https://github.com/kinalbohdan" target="_blank" rel="noopener">View GitHub</a>
+          </div>
+        </div>
+        <img class="hero-photo" src="https://avatars.githubusercontent.com/u/299618758?s=400&u=2f5fc7e9ff555b4cbcdbfbe8f64eb035e7397aea&v=4" alt="Portrait of Bohdan Kinal">
+      </section>
+
+      <section class="wrap" id="about">
+        <p class="eyebrow-line">01 — About</p>
+        <h2 class="section-title">A bit about me</h2>
+        <div class="about-grid">
+          <div>
+            <p>I'm a Computer Science student, currently in my fourth year. Most of my time goes into coursework, side projects, and slowly turning this page into a proper personal site.</p>
+            <p>I was drawn to computer science because I enjoy understanding how things work and turning ideas into working code. I especially like solving practical problems through programming, working with databases, and building applications that are useful and easy to use.</p>
+            <p>Outside of coursework, I enjoy exploring new technologies, exercising, and working on personal programming projects.</p>
+          </div>
+          <ul class="fact-list">
+            <li><span class="k">Status</span><span>4th-year student</span></li>
+            <li><span class="k">Field</span><span>Computer Science</span></li>
+            <li><span class="k">Programme</span><span>Higher education</span></li>
+            <li><span class="k">Based in</span><span>Dnipro</span></li>
+            <li><span class="k">GitHub</span><span>@kinalbohdan</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="wrap" id="focus">
+        <br>
+        <p class="eyebrow-line">02 — Focus</p>
+        <h2 class="section-title">What I'm working on</h2>
+        <div class="focus-grid">
+          <div class="focus-card">
+            <h3>Software Engineering</h3>
+            <p>I work with Python, PHP, JavaScript, and SQL. I have experience with algorithms, databases, Git, and building software projects as part of my coursework.</p>
+          </div>
+          <div class="focus-card">
+            <h3>Web Development</h3>
+            <p>I work with HTML, CSS, JavaScript, PHP, and MySQL, including building web applications with database integration. I also have experience with Django and the MTV architecture.</p>
+          </div>
+          <div class="focus-card">
+            <h3>Data &amp; Problem Solving</h3>
+            <p>I'm interested in data analysis, statistics, and optimization. I enjoy working with data, comparing different approaches, and finding efficient solutions to practical problems.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap" id="education">
+        <br>
+        <p class="eyebrow-line">03 — Education</p>
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-when">Year 4</div>
+            <div class="tl-body">
+              <h3>NTU Higher education Programme</h3>
+              <p>B.Sc. Computer Science — currently in the final year of the programme.</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-when">Earlier</div>
+            <div class="tl-body">
+              <h3>Secondary education</h3>
+              <p>Completed 11 years of school.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap" id="building">
+        <br>
+        <p class="eyebrow-line">04 — Building</p>
+        <h2 class="section-title">Currently building</h2>
+        <div class="now-card">
+          <span class="now-dot"></span>
+          <div>
+            <h3>kinalbohdan.github.io</h3>
+            <p>This page — a personal site hosted on GitHub Pages. Follow along at <a href="https://github.com/kinalbohdan/kinalbohdan.github.io" target="_blank" rel="noopener">kinalbohdan.github.io</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap" id="contact">
+        <br>
+        <p class="eyebrow-line">05 — Contact</p>
+        <h2 class="section-title">Get in touch</h2>
+        <p>The fastest way to reach me is by email: <a href="mailto:kinalbohdan@gmail.com">kinalbohdan@gmail.com</a></p>
+        <p>You can also find me on <a href="https://github.com/kinalbohdan" target="_blank" rel="noopener">GitHub</a>.</p>
+      </section>
+
+    </main>
+
+    <footer>
+      © 2026 Bohdan Kinal <span>·</span> built with HTML &amp; CSS
+    </footer>
+
+  </div>
+</div>
+
+</body>
+</html>
