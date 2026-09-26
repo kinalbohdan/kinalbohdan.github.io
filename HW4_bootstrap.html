@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Bootstrap 5.3 CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons (for hamburger caret / small touches, optional) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+  :root {
+    --edu-blue: #1e6fef;
+    --edu-yellow: #ffc107;
+    --edu-dark: #1c1f24;
+    --edu-green: #1e7e42;
+  }
+
+  body {
+    background-color: #f5f6f8;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  /* ===== Navbar ===== */
+  .navbar-eduportal {
+    background-color: var(--edu-dark);
+  }
+  .navbar-eduportal .navbar-brand span.edu {
+    color: var(--edu-blue);
+  }
+  .navbar-eduportal .navbar-brand span.portal {
+    color: #ffffff;
+  }
+  .navbar-eduportal .nav-link {
+    color: rgba(255,255,255,.75) !important;
+  }
+  .navbar-eduportal .nav-link.active {
+    color: #ffffff !important;
+    font-weight: 600;
+  }
+  .navbar-eduportal .navbar-toggler {
+    border-color: rgba(255,255,255,.4);
+  }
+
+  /* ===== Hero ===== */
+  .hero-card {
+    border-radius: 14px;
+    border: 1px solid #e7e9ec;
+    background-color: #ffffff;
+  }
+
+  /* ===== Card headers ===== */
+  .card-header-blue {
+    background-color: var(--edu-blue);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 12px 12px 0 0 !important;
+  }
+  .card-header-yellow {
+    background-color: var(--edu-yellow);
+    color: #1c1f24;
+    font-weight: 600;
+    border-radius: 12px 12px 0 0 !important;
+  }
+  .card-header-dark {
+    background-color: var(--edu-dark);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 12px 12px 0 0 !important;
+  }
+  .dashboard-card {
+    border-radius: 12px;
+    border: 1px solid #e7e9ec;
+    overflow: hidden;
+  }
+
+  .progress-bar-green {
+    background-color: var(--edu-green);
+  }
+
+  .btn-outline-eduportal {
+    color: var(--edu-blue);
+    border-color: var(--edu-blue);
+  }
+  .btn-outline-eduportal:hover {
+    background-color: var(--edu-blue);
+    color: #fff;
+  }
+
+  .btn-dark-eduportal {
+    background-color: var(--edu-dark);
+    color: #fff;
+    border: none;
+  }
+  .btn-dark-eduportal:hover {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .stat-box {
+    border: 1px solid #e7e9ec;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+  }
+  .stat-box .stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  .stat-box .stat-label {
+    font-size: .72rem;
+    letter-spacing: .04em;
+    color: #6c757d;
+    text-transform: uppercase;
+  }
+
+  /* ===== Registration form ===== */
+  .registration-card {
+    border-radius: 14px;
+    border: 1px solid #e7e9ec;
+    background-color: #ffffff;
+  }
+  .fieldset-block {
+    border: 1px solid #e7e9ec;
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+  .fieldset-title {
+    color: var(--edu-blue);
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+  }
+
+  .form-check-input:checked {
+    background-color: var(--edu-blue);
+    border-color: var(--edu-blue);
+  }
+  .form-switch .form-check-input:checked {
+    background-color: var(--edu-blue);
+    border-color: var(--edu-blue);
+  }
+
+  .btn-submit-registration {
+    background-color: var(--edu-green);
+    border-color: var(--edu-green);
+  }
+  .btn-submit-registration:hover {
+    background-color: #17632f;
+    border-color: #17632f;
+  }
+  .btn-reset-form {
+    color: #dc3545;
+    border-color: #dc3545;
+  }
+  .btn-reset-form:hover {
+    background-color: #dc3545;
+    color: #fff;
+  }
+
+  footer.site-footer {
+    background-color: var(--edu-dark);
+    color: rgba(255,255,255,.7);
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar navbar-expand-lg navbar-eduportal navbar-dark py-3">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-4" href="#">
+      <span class="edu">EDU</span><span class="portal">PORTAL</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+      aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3 text-lg-end">
+        <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Courses</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Schedules</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+          </a>
+          <ul class="dropdown-menu dropdown-menu-lg-end">
+            <li><a class="dropdown-item" href="#">My Profile</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" style="color: #dc3545;">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container my-4 my-lg-5">
+
+  <!-- ===================== HERO ===================== -->
+  <div class="hero-card p-4 p-lg-5 mb-4">
+    <h1 class="fw-bold display-6 display-md-4">Welcome back, Academic Developer!</h1>
+    <p class="text-secondary mt-3 mb-4" style="max-width: 640px;">
+      This reference implementation demonstrates a fully responsive dashboard using the Bootstrap 5.3 grid layout,
+      advanced system forms, panels (cards), and navigation bars.
+    </p>
+    <div class="d-flex flex-wrap gap-3">
+      <button class="btn btn-primary px-4 py-2">View Syllabus</button>
+      <button class="btn btn-outline-secondary px-4 py-2">Quick Start</button>
+    </div>
+  </div>
+
+  <!-- ===================== THREE CARDS ===================== -->
+  <div class="row g-4 mb-4">
+
+    <!-- Frontend Engineering -->
+    <div class="col-12 col-lg-4">
+      <div class="card dashboard-card h-100">
+        <div class="card-header card-header-blue py-3 px-3">Frontend Engineering</div>
+        <div class="card-body d-flex flex-column">
+          <h5 class="fw-bold">Bootstrap 5 Component Mastery</h5>
+          <p class="text-secondary">
+            Learn to master responsive utilities, grid breakdowns, flex layout mappings, and unified CSS variable
+            customizations.
+          </p>
+          <div class="mt-auto">
+            <div class="d-flex justify-content-between small mb-1">
+              <span>Progress</span>
+              <span>75%</span>
+            </div>
+            <div class="progress mb-3" style="height: 8px;">
+              <div class="progress-bar progress-bar-green" style="width: 75%;"></div>
+            </div>
+            <button class="btn btn-outline-eduportal w-100">Resume Module</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upcoming Deadlines -->
+    <div class="col-12 col-lg-4">
+      <div class="card dashboard-card h-100">
+        <div class="card-header card-header-yellow py-3 px-3">Upcoming Deadlines</div>
+        <div class="card-body d-flex flex-column">
+
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <div>
+              <div class="fw-semibold">Grid System Layout Lab</div>
+              <div class="text-secondary small">Due in 2 days</div>
+            </div>
+            <span class="badge rounded-pill text-bg-danger">High</span>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <div>
+              <div class="fw-semibold">Form Validation Hook</div>
+              <div class="text-secondary small">Due in 5 days</div>
+            </div>
+            <span class="badge rounded-pill text-bg-secondary">Medium</span>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <div>
+              <div class="fw-semibold">Accessible Navbar Audit</div>
+              <div class="text-secondary small">Due next week</div>
+            </div>
+            <span class="badge rounded-pill text-bg-info text-dark">Low</span>
+          </div>
+
+          <button class="btn btn-dark-eduportal w-100 mt-auto">View All Tasks</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Academic Overview -->
+    <div class="col-12 col-lg-4">
+      <div class="card dashboard-card h-100">
+        <div class="card-header card-header-dark py-3 px-3">Academic Overview</div>
+        <div class="card-body d-flex flex-column">
+          <div class="row g-3 mb-3">
+            <div class="col-6">
+              <div class="stat-box">
+                <div class="stat-value text-primary">4.8</div>
+                <div class="stat-label">Current GPA</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="stat-box">
+                <div class="stat-value text-success">12</div>
+                <div class="stat-label">Passed</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="stat-box">
+                <div class="stat-value text-warning">2</div>
+                <div class="stat-label">Active</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="stat-box">
+                <div class="stat-value text-info">98%</div>
+                <div class="stat-label">Attendance</div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-outline-secondary w-100 mt-auto">Download Transcript</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===================== REGISTRATION FORM ===================== -->
+  <div class="registration-card p-4 p-lg-5">
+    <h2 class="fw-bold">Course Registration &amp; Audit</h2>
+    <p class="text-secondary">Please complete the configuration profile below to assign student groups and resources.</p>
+    <hr class="mb-4">
+
+    <form novalidate>
+
+      <!-- Personal Information -->
+      <div class="fieldset-block mb-4">
+        <h5 class="fieldset-title">Personal Information</h5>
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullName" placeholder="John Doe">
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" placeholder="johndoe@university.edu">
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="password" class="form-label">Security Token (Password)</label>
+            <input type="password" class="form-control" id="password" value="password">
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="enrollDate" class="form-label">Enrollment Term Date</label>
+            <input type="date" class="form-control" id="enrollDate">
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Preferences -->
+      <div class="fieldset-block mb-4">
+        <h5 class="fieldset-title">Course Preferences</h5>
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <label for="pathway" class="form-label">Primary Development Track</label>
+            <select class="form-select" id="pathway">
+              <option selected disabled>Choose a pathway...</option>
+              <option>Frontend Engineering</option>
+              <option>Backend Engineering</option>
+              <option>Full-Stack Development</option>
+              <option>UI / UX Design</option>
+            </select>
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="form-label d-block">Prior UI Framework Experience</label>
+            <div class="d-flex flex-wrap gap-3">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="experience" id="expNone" checked>
+                <label class="form-check-label" for="expNone">None</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="experience" id="expSome">
+                <label class="form-check-label" for="expSome">Some (1-2 Projects)</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="experience" id="expAdvanced">
+                <label class="form-check-label" for="expAdvanced">Advanced</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <label for="goals" class="form-label">Statement of Academic Goals</label>
+            <textarea class="form-control" id="goals" rows="3"
+              placeholder="Briefly specify what you intend to build with Bootstrap layout engines..."></textarea>
+          </div>
+          <div class="col-12">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="subscribeSwitch" checked>
+              <label class="form-check-label" for="subscribeSwitch">
+                Subscribe to community lab updates and framework patch notes
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end gap-3 flex-wrap">
+        <button type="reset" class="btn btn-outline-danger btn-reset-form">Reset Form</button>
+        <button type="submit" class="btn btn-submit-registration text-white">Submit Registration</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer text-center py-4 mt-5">
+  <small>&copy; 2026 EduPortal. Built as a pedagogical example for responsive CSS grids.</small>
+</footer>
+
+<!-- Bootstrap 5.3 JS Bundle -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
