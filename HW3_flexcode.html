@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlexCode | Master the Layout Grid with Flexbox</title>
+<style>
+  :root {
+    --blue: #3461fd;
+    --navy: #14182b;
+    --navy-2: #1c2138;
+    --red: #ef4444;
+    --green: #12b981;
+    --text-dark: #14182b;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-dark);
+    background-color: #ffffff;
+  }
+
+  a { text-decoration: none; }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ===================== NAVBAR ===================== */
+  header.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    white-space: nowrap;
+  }
+  .logo span {
+    color: var(--blue);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .nav-links a {
+    color: #374151;
+    font-size: .95rem;
+  }
+  .nav-links a:hover {
+    color: var(--blue);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: .95rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .btn-login {
+    color: var(--text-dark);
+    background: none;
+  }
+  .btn-signup {
+    background-color: var(--navy);
+    color: #fff;
+  }
+  .btn-signup:hover {
+    background-color: #000;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+  }
+  .hamburger span {
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-dark);
+    display: block;
+  }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 24px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu a {
+    color: #374151;
+    font-size: 1rem;
+  }
+  .mobile-menu .btn {
+    width: 100%;
+  }
+
+  .mobile-menu.open {
+    display: flex;
+  }
+
+  /* ===================== HERO ===================== */
+  .hero {
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
+    padding: 90px 24px 80px;
+    text-align: center;
+  }
+  .hero h1 {
+    color: #fff;
+    font-size: 2.6rem;
+    font-weight: 800;
+    max-width: 800px;
+    margin: 0 auto 24px;
+    line-height: 1.2;
+  }
+  .hero p {
+    color: rgba(255,255,255,.75);
+    font-size: 1.1rem;
+    max-width: 620px;
+    margin: 0 auto 36px;
+    line-height: 1.6;
+  }
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn-hero-primary {
+    background-color: #fff;
+    color: var(--navy);
+  }
+  .btn-hero-primary:hover {
+    background-color: #e5e7eb;
+  }
+  .btn-hero-secondary {
+    background: none;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.5);
+  }
+  .btn-hero-secondary:hover {
+    background-color: rgba(255,255,255,.1);
+  }
+
+  /* ===================== LEARNING PATHS ===================== */
+  .paths-section {
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .paths-section h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .paths-section > .container > p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 48px;
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .card {
+    flex: 1 1 300px;
+    max-width: 350px;
+    background-color: #fff;
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--red);
+    border-radius: 10px;
+    padding: 28px 24px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  }
+  .card.card-blue { border-top-color: var(--blue); }
+  .card.card-green { border-top-color: var(--green); }
+
+  .card .icon {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+  }
+  .card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: var(--red);
+  }
+  .card.card-blue h3 { color: var(--blue); }
+  .card.card-green h3 { color: var(--green); }
+
+  .card p {
+    color: var(--text-muted);
+    font-size: .95rem;
+    line-height: 1.6;
+    margin: 0 0 20px;
+    flex-grow: 1;
+  }
+  .card .explore {
+    color: var(--blue);
+    font-weight: 600;
+    font-size: .95rem;
+  }
+
+  /* ===================== FOOTER ===================== */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-inner p {
+    color: var(--text-muted);
+    font-size: .9rem;
+    margin: 0;
+  }
+  .footer-icons {
+    display: flex;
+    gap: 16px;
+    font-size: 1.1rem;
+  }
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width: 860px) {
+    .nav-links,
+    .nav-actions {
+      display: none;
+    }
+    .hamburger {
+      display: flex;
+    }
+    .hero h1 {
+      font-size: 2rem;
+    }
+    .hero p {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      padding: 60px 20px;
+    }
+    .hero h1 {
+      font-size: 1.7rem;
+    }
+    .paths-section {
+      padding: 56px 20px;
+    }
+    .card {
+      max-width: 100%;
+    }
+    .footer-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<header class="navbar">
+  <a href="#" class="logo">Flex<span>Code</span></a>
+
+  <nav class="nav-links">
+    <a href="#">Courses</a>
+    <a href="#">Features</a>
+    <a href="#">Community</a>
+    <a href="#">Docs</a>
+  </nav>
+
+  <div class="nav-actions">
+    <a href="#" class="btn btn-login">Log In</a>
+    <a href="#" class="btn btn-signup">Sign Up</a>
+  </div>
+
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#">Courses</a>
+  <a href="#">Features</a>
+  <a href="#">Community</a>
+  <a href="#">Docs</a>
+  <a href="#" class="btn btn-login">Log In</a>
+  <a href="#" class="btn btn-signup">Sign Up</a>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <h1>Master the Layout Grid with Flexbox</h1>
+  <p>Learn semantic HTML and CSS properties by building real-world UI components layout structures from scratch.</p>
+  <div class="hero-actions">
+    <a href="#" class="btn btn-hero-primary">Get Started</a>
+    <a href="#" class="btn btn-hero-secondary">View Curriculum</a>
+  </div>
+</section>
+
+<!-- ===================== LEARNING PATHS ===================== -->
+<section class="paths-section">
+  <div class="container">
+    <h2>Explore Our Learning Paths</h2>
+    <p>Hand-picked interactive challenges to improve layout engineering skills.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon">⚙️</div>
+        <h3>Flexbox Fundamentals</h3>
+        <p>Learn main-axis configuration, cross-axis distribution rules, and working with modern layout dimensions.</p>
+        <a href="#" class="explore">Explore &rarr;</a>
+      </div>
+
+      <div class="card card-blue">
+        <div class="icon">📊</div>
+        <h3>Advanced Layouts</h3>
+        <p>Build real nested app cards, explicit component frameworks, dynamic application flows, and side panels.</p>
+        <a href="#" class="explore">Explore &rarr;</a>
+      </div>
+
+      <div class="card card-green">
+        <div class="icon">🚀</div>
+        <h3>Build a Dashboard</h3>
+        <p>Create full page distributions combining content sections, dynamic sidebars, grids, and modular blocks.</p>
+        <a href="#" class="explore">Explore &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-inner">
+    <p>Copyright &copy; flexCode. All rights reserved.</p>
+    <div class="footer-icons">
+      <span>✕</span>
+      <span>🌐</span>
+      <span>💼</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen);
+  });
+</script>
+
+</body>
+</html>
